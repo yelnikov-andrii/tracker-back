@@ -11,7 +11,17 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true} ));
-app.use(cors());
+
+app.use(cors({
+  origin: 'https://track-your-day.netlify.app',
+  credentials: true
+}));
+
+app.options('*', cors({
+  origin: 'https://track-your-day.netlify.app',
+  credentials: true
+}));
+
 app.use(router);
 app.use(errorMiddleware);
 
