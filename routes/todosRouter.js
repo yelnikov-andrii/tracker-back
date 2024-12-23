@@ -7,4 +7,6 @@ export const todosRouter = express.Router();
 todosRouter.post('/todos', catchError(todosController.createTodo));
 todosRouter.get('/todos/:userId', catchError(todosController.getTodos));
 todosRouter.delete('/todos/:todoId', catchError(todosController.deleteTodo));
+todosRouter.delete('/todos', catchError(todosController.deleteAll));
 todosRouter.patch('/todos/:todoId', catchError(todosController.changeTodo));
+todosRouter.patch('/todos', catchError(todosController.toggleTodos));

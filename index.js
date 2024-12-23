@@ -12,13 +12,31 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true} ));
 
+const allowedOrigins = [
+  'https://track-your-day.netlify.app',
+  'http://localhost:3000',
+  'http://127.0.0.1:3000'
+];
+
 app.use(cors({
-  origin: 'https://track-your-day.netlify.app',
+  origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+          callback(null, true);
+      } else {
+          callback(new Error('Not allowed by CORS'));
+      }
+  },
   credentials: true
 }));
 
 app.options('*', cors({
-  origin: 'https://track-your-day.netlify.app',
+  origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+          callback(null, true);
+      } else {
+          callback(new Error('Not allowed by CORS'));
+      }
+  },
   credentials: true
 }));
 

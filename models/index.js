@@ -38,3 +38,18 @@ TodoTracker.belongsTo(UserTracker);
 UserTracker.sync().catch((error) => console.error("UserTracker sync error:", error));
 TodoTracker.sync().catch((error) => console.error("TodoTracker sync error:", error));
 
+export const TodoWithoutTimeTracker = sequelize.define('todo_without_time_tracker', {
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    completed: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false
+    }
+});
+
+UserTracker.hasMany(TodoTracker);
+TodoWithoutTimeTracker.belongsTo(UserTracker);
+TodoWithoutTimeTracker.sync().catch((error) => console.error("TodoWithoutTime sync error", error));
+
