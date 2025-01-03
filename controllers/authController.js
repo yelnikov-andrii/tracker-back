@@ -41,7 +41,6 @@ async function register(req, res) {
 
 async function login(req, res) {
   const { email, password } = req.body;
-  console.log(email, password, 'email password')
 
   const user = await userService.getByEmail(email);
   if (!user) {
