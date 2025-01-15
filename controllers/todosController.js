@@ -54,8 +54,9 @@ async function deleteTodo(req, res) {
             res.status(400).json({ message: 'Todo not found or you do not have permission to delete it' });
             return;
         } else {
+            const todo = await TodoTracker.findOne({ where: { id: todoId } });
             await TodoTracker.destroy({ where: { id: todoId } });
-            return res.status(204).send();
+            return res.status(204).json({ todo });
         }
     }
 
