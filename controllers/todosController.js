@@ -20,7 +20,7 @@ async function createTodo(req, res) {
         return res.status(201).json(newTodo);
     }
     catch (e) {
-        console.error('Error creating todo:', error);
+        console.error('Error creating todo:', e);
         return res.status(500).json({ message: 'Failed to create todo' });
     }
 }
