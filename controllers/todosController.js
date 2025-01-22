@@ -1,4 +1,3 @@
-import { where } from "sequelize";
 import { TodoTracker } from "../models/index.js";
 
 async function createTodo(req, res) {
@@ -51,6 +50,7 @@ async function deleteTodo(req, res) {
     try {
         const foundTodo = await TodoTracker.findOne({ where: { userTrackerId: userId, id: todoId } });
         if (!foundTodo) {
+            console.log('no todo found')
             res.status(400).json({ message: 'Todo not found or you do not have permission to delete it' });
             return;
         } else {
@@ -93,6 +93,8 @@ async function changeTodo(req, res) {
             finish: newTodo.finish || foundTodo.finish,
             completed: newTodo.completed !== undefined ? newTodo.completed : foundTodo.completed
         });
+
+        
         return res.status(200).json(foundTodo);
 
     } catch (e) {
