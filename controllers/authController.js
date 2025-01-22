@@ -18,8 +18,8 @@ function validatePassword(str) {
   if (!str) {
     return 'Password can not be empty'
   }
-  if (str.length < 6) {
-    return 'Password must be at least 6 characters';
+  if (str.length < 5) {
+    return 'Password must be at least 5 characters';
   }
 
   return ''

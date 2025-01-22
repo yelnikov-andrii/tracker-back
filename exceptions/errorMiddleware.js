@@ -7,7 +7,7 @@ export const errorMiddleware = (error, req, res, next) => {
         return;
     }
 
-    console.log(error, 'error')
+    console.error(error);
 
     res.status(500).send({message: 'unexpected error'});
 }

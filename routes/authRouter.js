@@ -7,4 +7,3 @@ export const authRouter = express.Router();
 authRouter.post('/registration', catchError(authController.register));
 authRouter.post('/login', catchError(authController.login));
 authRouter.post('/refresh', catchError(authController.refresh));
-// authRouter.get('/logout', catchError(authController.logout));
